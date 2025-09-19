@@ -1,0 +1,115 @@
+.scoreboard-container {
+  background: white;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h3, h4 {
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.timer-section {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.timer {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.timer.warning {
+  color: #e74c3c;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.timer-status {
+  font-size: 0.8rem;
+  color: #7f8c8d;
+  margin-top: 0.5rem;
+}
+
+.players-section {
+  margin-bottom: 1rem;
+}
+
+.player-score {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.player-score.current-player {
+  background: #e3f2fd;
+  border: 2px solid #2196f3;
+}
+
+.player-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.player-name {
+  font-weight: 500;
+}
+
+.player-type {
+  font-size: 1rem;
+}
+
+.player-score-value {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #27ae60;
+}
+
+.game-phase {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.phase-indicator {
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.phase-waiting {
+  background: #f39c12;
+  color: white;
+}
+
+.phase-playing {
+  background: #27ae60;
+  color: white;
+}
+
+.phase-finished {
+  background: #e74c3c;
+  color: white;
+}
+
+.last-move {
+  padding: 0.5rem;
+  background: #f8f9fa;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}

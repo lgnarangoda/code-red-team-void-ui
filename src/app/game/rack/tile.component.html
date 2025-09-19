@@ -1,0 +1,11 @@
+<div 
+  class="tile"
+  [class.selected]="isSelected"
+  [class.dragging]="isDragging"
+  (mousedown)="onMouseDown($event)"
+  (dragstart)="onDragStart($event)"
+  (dragend)="onDragEnd($event)"
+>
+  <div class="letter">{{ displayLetter }}</div>
+  <div class="value">{{ tile.value }}</div>
+</div>

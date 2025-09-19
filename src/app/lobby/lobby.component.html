@@ -1,0 +1,48 @@
+<div class="lobby-container">
+  <h1>Scrabble Lobby</h1>
+  
+  <div class="player-info" *ngIf="isAuthenticated">
+    <p>Welcome, {{ currentUser }}!</p>
+  </div>
+  
+  <div class="game-options" *ngIf="!isAuthenticated">
+    <h2>Enter Your Name</h2>
+    <input 
+      type="text" 
+      [(ngModel)]="playerName" 
+      placeholder="Enter your name"
+      class="name-input"
+    >
+    <button 
+      (click)="login()" 
+      [disabled]="!playerName.trim()"
+      class="login-btn"
+    >
+      Join Game
+    </button>
+  </div>
+  
+  <div class="game-modes" *ngIf="isAuthenticated">
+    <h2>Choose Game Mode</h2>
+    <div class="mode-buttons">
+      <button 
+        (click)="findMatch()" 
+        class="mode-btn"
+        [disabled]="isSearching"
+      >
+        {{ isSearching ? 'Searching...' : 'Find Match' }}
+      </button>
+      <button 
+        (click)="playWithBot()" 
+        class="mode-btn"
+      >
+        Play with Bot
+      </button>
+    </div>
+  </div>
+  
+  <div class="waiting-message" *ngIf="isWaiting">
+    <p>Waiting for opponent...</p>
+    <div class="spinner"></div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="controls-container">
+  <h3>Game Controls</h3>
+  
+  <div class="control-buttons">
+    <button 
+      class="control-btn shuffle"
+      (click)="onShuffle()"
+      [disabled]="!isCurrentPlayer"
+    >
+      🔀 Shuffle
+    </button>
+    
+    <button 
+      class="control-btn exchange"
+      (click)="onExchange()"
+      [disabled]="!isCurrentPlayer"
+    >
+      🔄 Exchange
+    </button>
+    
+    <button 
+      class="control-btn pass"
+      (click)="onPassTurn()"
+      [disabled]="!isCurrentPlayer"
+    >
+      ⏭️ Pass Turn
+    </button>
+    
+    <button 
+      class="control-btn submit"
+      (click)="onSubmitMove()"
+      [disabled]="!isCurrentPlayer"
+    >
+      ✅ Submit Move
+    </button>
+  </div>
+  
+  <div class="game-info">
+    <p *ngIf="!isCurrentPlayer" class="wait-message">
+      Waiting for your turn...
+    </p>
+    <p *ngIf="isCurrentPlayer" class="your-turn">
+      It's your turn!
+    </p>
+  </div>
+</div>

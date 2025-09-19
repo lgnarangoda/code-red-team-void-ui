@@ -1,0 +1,13 @@
+<div 
+  class="square"
+  [class]="getSquareClasses()"
+  [style.background-color]="getBackgroundColor()"
+>
+  <div class="premium-indicator" *ngIf="square.premiumType && !square.isOccupied">
+    {{ getPremiumText() }}
+  </div>
+  <div class="tile" *ngIf="square.tile">
+    <div class="letter">{{ square.tile.letter }}</div>
+    <div class="value">{{ square.tile.value }}</div>
+  </div>
+</div>

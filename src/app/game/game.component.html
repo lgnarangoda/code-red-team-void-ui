@@ -1,0 +1,50 @@
+<div class="game-container">
+  <div class="game-header">
+    <h1>Scrabble Game</h1>
+    <button (click)="returnToLobby()" class="back-btn">← Back to Lobby</button>
+  </div>
+
+  <div class="warnings" *ngIf="warnings.length">
+    <div class="warning" *ngFor="let msg of warnings">⚠️ {{ msg }}</div>
+  </div>
+
+  <div class="game-content">
+    <div class="left-panel">
+      <app-scoreboard
+        [gameState]="gameState"
+        [timeLeft]="(timeLeft$ | async) || 0"
+        [isTimerRunning]="(isTimerRunning$ | async) || false"
+      ></app-scoreboard>
+
+      <app-controls
+        [isCurrentPlayer]="isCurrentPlayer"
+        (shuffle)="onShuffle()"
+        (exchange)="onExchange()"
+        (passTurn)="onPassTurn()"
+        (submitMove)="onSubmitMove()"
+      ></app-controls>
+    </div>
+
+    <div class="center-panel">
+      <app-board
+        [board]="gameState?.board || []"
+        [selectedTiles]="selectedTiles"
+        (tilePlaced)="onTilePlaced($event)"
+        (tileRemoved)="onTileRemoved($event)"
+      ></app-board>
+      <div class="hint">
+        <p>Tip: Click a starting square, click again to toggle direction. Type letters to place tiles. Shift+Letter uses a blank tile. Enter submits. Enter with no tiles passes (with confirm). Press X to exchange tiles.</p>
+      </div>
+    </div>
+
+    <div class="right-panel">
+      <app-rack
+        [tiles]="currentPlayerRack"
+        [selectedTiles]="selectedTiles"
+        (tileSelected)="onTileSelected($event)"
+        (tileDeselected)="onTileDeselected($event)"
+        (tilesReordered)="onRackReordered($event)"
+      ></app-rack>
+    </div>
+  </div>
+</div>

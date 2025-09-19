@@ -1,0 +1,23 @@
+<div class="rack-container">
+  <h3>Your Tiles</h3>
+  <div class="rack">
+    <div
+      class="rack-tile"
+      *ngFor="let tile of tiles; let i = index; trackBy: trackByTile"
+      draggable="true"
+      (dragstart)="onDragStart(i, $event)"
+      (dragover)="onDragOver($event)"
+      (drop)="onDrop(i, $event)"
+      (click)="onTileClick(tile)"
+    >
+      <app-tile
+        [tile]="tile"
+        [isSelected]="isTileSelected(tile.id)"
+      ></app-tile>
+    </div>
+  </div>
+  <div class="rack-info">
+    <p>Tiles: {{ tiles.length }}/7</p>
+    <p>Selected: {{ selectedTiles.length }}</p>
+  </div>
+</div>

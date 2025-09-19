@@ -1,0 +1,38 @@
+<div class="scoreboard-container">
+  <h3>Game Status</h3>
+
+  <div class="timer-section">
+    <div class="timer" [class.warning]="isTimeWarning">
+      ⏰ {{ formatTime(timeLeft) }}
+    </div>
+    <div class="timer-status" *ngIf="isTimerRunning">
+      Timer Running
+    </div>
+  </div>
+
+  <div class="players-section">
+    <h4>Players</h4>
+    <div
+      *ngFor="let player of gameState?.players; trackBy: trackByPlayer"
+      class="player-score"
+      [class.current-player]="player.isCurrentPlayer"
+    >
+      <div class="player-info">
+        <span class="player-name">{{ player.name }}</span>
+        <span class="player-type" *ngIf="player.isBot">🤖</span>
+      </div>
+      <div class="player-score-value">{{ player.score }}</div>
+    </div>
+  </div>
+
+  <div class="game-phase">
+    <p class="phase-indicator" [class]="getPhaseClass()">
+      {{ getPhaseText() }}
+    </p>
+  </div>
+
+  <div class="last-move" *ngIf="gameState?.lastMove">
+    <h4>Last Move</h4>
+    <p>{{ gameState?.lastMove?.playerId }} scored {{ gameState?.lastMove?.score }} points</p>
+  </div>
+</div>
